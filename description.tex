@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+
+\setlength{\topmargin}{0.0cm}
+\setlength{\textheight}{21.5cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\textwidth}{16.5cm}
+\setlength{\columnsep}{0.6cm}
+
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Lc}{\mathcal{L}}
+
+\newcommand{\DKL}{D_{\mathrm{KL}}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\section*{afcluster software}
+\emph{afcluster} software performs centroid based clustering
+of nucleotide sequences based on word ($n$-mer) counts.
+Word counts can be computed using overlapping or non-overlapping $n$-mers,
+optionally concatenating the sequence together with its reverse complement.
+
+Implemented clustering algorithms include
+$k$-means type algorithm and expectation maximization (EM) algorithm.
+For $k$-means type algorithm one can use the following distances:
+$L_2$ (Euclidean) distance, Kullback-Leibler (KL) divergence, $d_2$ distance,
+$d_2^*$ distance, $\chi^2$ statistic and the symmetrized KL divergence. 
+
+One can also perform consensus clustering.
+Regular clustering is performed a specified number of times,
+and the consensus partitioning is built based on patterns
+of individual samples clustering together.
+Consensus clustering mitigates the dependence of the resulting partitioning
+on the random initialization inherent to centroid-based methods.
+This is achieved at the cost of $\Oc(N^2 \log N)$ time complexity and $\Oc(N^2)$
+space complexity for input consisting of $N$ sequences.
+
+The software also allows soft EM clustering,
+in which case each sequence is only assigned to each cluster with some probability.
+This method gives some estimate of the clustering accuracy
+without the overhead of the consensus clustering.
+
+\emph{afcluster} software is implemented in C++.
+It has been compiled and tested using GNU GCC.
+The tool is open source under the GNU GPL license.
+
+\end{document}
