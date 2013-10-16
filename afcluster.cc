@@ -232,10 +232,6 @@ int main(int argc, char **argv)
 		freq_1[i] = freq_1[0] + i*NUM_NT;
 		fill_freq_vector(seq, 1, freq_1[i], false, pseudocount);
 	}
-	if (verbose_level>0){
-		cerr<<"Read counts calculated\n";
-	}
-
 
 	// whiten if requested; in this case reset the distance to euclidean L2
 	if (normalize_flag){
